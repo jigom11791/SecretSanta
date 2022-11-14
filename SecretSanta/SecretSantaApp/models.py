@@ -20,3 +20,10 @@ class Participants(models.Model):
             return True
         else:
             return False
+
+class Pairs(models.Model):
+    give = models.ForeignKey('Participants', on_delete=models.CASCADE)
+    receive = models.ForeignKey('Participants', on_delete=models.CASCADE, related_name='recieve')
+
+    def __str__(self):
+        return f'{self.give} => {self.receive}'
